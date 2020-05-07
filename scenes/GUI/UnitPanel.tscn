@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/GUI/marcoPersonaje.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/GUI/item.png" type="Texture" id=2]
+[ext_resource path="res://scenes/GUI/UnitPanel.gd" type="Script" id=3]
+
+[node name="PanelContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 732.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 282.0
+margin_bottom = 732.0
+
+[node name="Personaje" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 282.0
+margin_bottom = 276.0
+
+[node name="perfil" type="TextureRect" parent="HBoxContainer/VBoxContainer/Personaje"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 269.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/Personaje"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 269.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="slot1" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 282.0
+margin_bottom = 428.0
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/slot1"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 2 )
+
+[node name="slot2" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 282.0
+margin_bottom = 580.0
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/slot2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 2 )
+
+[node name="slot3" type="PanelContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 584.0
+margin_right = 282.0
+margin_bottom = 732.0
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/slot3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 286.0
+margin_right = 286.0
+margin_bottom = 732.0

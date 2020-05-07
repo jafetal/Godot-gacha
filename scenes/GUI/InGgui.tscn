@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/GUI/UnitPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/GUI/InGgui.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -746.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1163.0
+margin_bottom = 739.0
+
+[node name="Control" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 286.0
+margin_bottom = 732.0
+
+[node name="Control2" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 290.0
+margin_right = 576.0
+margin_bottom = 732.0
+
+[node name="Control3" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 580.0
+margin_right = 866.0
+margin_bottom = 732.0
+
+[node name="Control4" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 870.0
+margin_right = 1156.0
+margin_bottom = 732.0

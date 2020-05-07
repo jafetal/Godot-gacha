@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/GUI/InGgui.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Main.gd" type="Script" id=3]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Unit1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 207.473, 179.521 )
+
+[node name="CanvasLayer" parent="." instance=ExtResource( 2 )]
+layer = 0
