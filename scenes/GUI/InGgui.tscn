@@ -1,49 +1,117 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/GUI/UnitPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/GUI/marcoPersonaje.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GUI/InGgui.gd" type="Script" id=2]
+[ext_resource path="res://scenes/unit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/GUI/item.png" type="Texture" id=4]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -746.0
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -66.0
+margin_right = 1130.0
+margin_bottom = 680.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 1163.0
 margin_bottom = 739.0
 
-[node name="Control" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Control" type="MarginContainer" parent="Control/PanelContainer/HBoxContainer"]
+margin_right = 286.0
+margin_bottom = 732.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/HBoxContainer/Control"]
 margin_right = 286.0
 margin_bottom = 732.0
 
-[node name="Control2" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 290.0
-margin_right = 576.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer"]
+margin_right = 282.0
 margin_bottom = 732.0
 
-[node name="Control3" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 580.0
-margin_right = 866.0
+[node name="Personaje" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+margin_right = 282.0
+margin_bottom = 276.0
+
+[node name="perfil" type="TextureRect" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 269.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 269.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="slot1" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+margin_top = 280.0
+margin_right = 282.0
+margin_bottom = 428.0
+
+[node name="item1" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot1"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 4 )
+
+[node name="slot2" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+margin_top = 432.0
+margin_right = 282.0
+margin_bottom = 580.0
+
+[node name="item2" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot2"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 4 )
+
+[node name="slot3" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+margin_top = 584.0
+margin_right = 282.0
 margin_bottom = 732.0
 
-[node name="Control4" parent="PanelContainer/HBoxContainer" instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 870.0
-margin_right = 1156.0
+[node name="item3" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot3"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 275.0
+margin_bottom = 141.0
+icon = ExtResource( 4 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer"]
+margin_left = 286.0
+margin_right = 286.0
 margin_bottom = 732.0
+
+[node name="unit" parent="." instance=ExtResource( 3 )]
+position = Vector2( 241.153, 209.352 )
+[connection signal="button_down" from="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje/Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje/Button" to="Control/PanelContainer/HBoxContainer/Control" method="_on_Button_button_down"]
