@@ -20,4 +20,8 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="TimerArts" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="timeout" from="TimerArts" to="." method="_on_TimerArts_timeout"]

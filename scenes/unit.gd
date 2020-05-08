@@ -20,10 +20,12 @@ func set_data(ranimacion,perfil):
 	$Sprite.hide()
 
 func attack():
-	play_anim("attack")
+	if(current_anim=="idle"):
+		play_anim("attack")
 	
 func arts():
-	play_anim("arts")
+	idle()
+	$TimerArts.start()
 	
 func true_arts():
 	play_anim("truearts")
@@ -38,3 +40,7 @@ func play_anim(animacion):
 
 func _on_AnimatedSprite_animation_finished():
 	idle()
+
+func _on_TimerArts_timeout():
+	play_anim("arts")
+	$TimerArts.stop()

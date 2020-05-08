@@ -1,12 +1,41 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/GUI/marcoPersonaje.png" type="Texture" id=1]
 [ext_resource path="res://scenes/GUI/InGgui.gd" type="Script" id=2]
 [ext_resource path="res://scenes/unit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/GUI/item.png" type="Texture" id=4]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Enter"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.95, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -288.075, 200 ), Vector2( 204.565, 200 ), Vector2( 312.713, 200.677 ), Vector2( 927.831, 200 ) ]
+}
+
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
+
+[node name="Units" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="unit" parent="Units" instance=ExtResource( 3 )]
+position = Vector2( 64.1137, 204.342 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enter = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( -288.075, 200 )
+scale = Vector2( 0.75, 0.75 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -32,7 +61,7 @@ margin_top = 7.0
 margin_right = 1163.0
 margin_bottom = 739.0
 
-[node name="Control" type="MarginContainer" parent="Control/PanelContainer/HBoxContainer"]
+[node name="ControlUnit1" type="MarginContainer" parent="Control/PanelContainer/HBoxContainer"]
 margin_right = 286.0
 margin_bottom = 732.0
 __meta__ = {
@@ -40,19 +69,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/HBoxContainer/Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1"]
 margin_right = 286.0
 margin_bottom = 732.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer"]
 margin_right = 282.0
 margin_bottom = 732.0
 
-[node name="Personaje" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="Personaje" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer"]
 margin_right = 282.0
 margin_bottom = 276.0
 
-[node name="perfil" type="TextureRect" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje"]
+[node name="perfil" type="TextureRect" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 275.0
@@ -62,7 +91,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje"]
+[node name="Button" type="Button" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 275.0
@@ -70,48 +99,50 @@ margin_bottom = 269.0
 icon = ExtResource( 1 )
 flat = true
 
-[node name="slot1" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="slot1" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer"]
 margin_top = 280.0
 margin_right = 282.0
 margin_bottom = 428.0
 
-[node name="item1" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot1"]
+[node name="item1" type="Button" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/slot1"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 275.0
 margin_bottom = 141.0
 icon = ExtResource( 4 )
 
-[node name="slot2" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="slot2" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer"]
 margin_top = 432.0
 margin_right = 282.0
 margin_bottom = 580.0
 
-[node name="item2" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot2"]
+[node name="item2" type="Button" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/slot2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 275.0
 margin_bottom = 141.0
 icon = ExtResource( 4 )
 
-[node name="slot3" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="slot3" type="PanelContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer"]
 margin_top = 584.0
 margin_right = 282.0
 margin_bottom = 732.0
 
-[node name="item3" type="Button" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/slot3"]
+[node name="item3" type="Button" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/slot3"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 275.0
 margin_bottom = 141.0
 icon = ExtResource( 4 )
 
-[node name="CenterContainer" type="CenterContainer" parent="Control/PanelContainer/HBoxContainer/Control/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer"]
 margin_left = 286.0
 margin_right = 286.0
 margin_bottom = 732.0
 
-[node name="unit" parent="." instance=ExtResource( 3 )]
-position = Vector2( 241.153, 209.352 )
-[connection signal="button_down" from="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje/Button" to="." method="_on_Button_button_down"]
-[connection signal="button_down" from="Control/PanelContainer/HBoxContainer/Control/HBoxContainer/VBoxContainer/Personaje/Button" to="Control/PanelContainer/HBoxContainer/Control" method="_on_Button_button_down"]
+[node name="Unit1Atack_timer" type="Timer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1"]
+wait_time = 2.0
+autostart = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="button_down" from="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/Button" to="." method="_on_Button_button_down"]
+[connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/Unit1Atack_timer" to="." method="_on_Unit1Atack_timer_timeout"]

@@ -41,7 +41,7 @@ animations = [ {
 "name": "trueArts",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 20 ), ExtResource( 28 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 18 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 28 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 18 ), ExtResource( 27 ), ExtResource( 23 ), ExtResource( 26 ), ExtResource( 17 ), ExtResource( 17 ), ExtResource( 24 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 25 ) ],
 "loop": false,
 "name": "arts",
 "speed": 15.0

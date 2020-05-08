@@ -19,6 +19,10 @@ config/name="gacha"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SceneSwitcher="*res://scripts/scene_switcher.gd"
+
 [display]
 
 window/size/width=480
