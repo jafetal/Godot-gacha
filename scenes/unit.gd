@@ -9,7 +9,7 @@ var ANIM_STATE = [
 	"truearts"
 ]
 var current_anim
-
+var state = 0 # 2.-arts, 3.-T.Arts
 func _ready():
 	pass
 
@@ -25,10 +25,14 @@ func attack():
 	
 func arts():
 	idle()
+	state = 2
 	$TimerArts.start()
 	
 func true_arts():
-	play_anim("truearts")
+	idle()
+	state = 3
+	$TimerArts.start()
+	
 	
 func idle():
 	play_anim("idle")
@@ -42,5 +46,9 @@ func _on_AnimatedSprite_animation_finished():
 	idle()
 
 func _on_TimerArts_timeout():
-	play_anim("arts")
+	if(state==2):
+		play_anim("arts")
+	elif(state==3):
+		play_anim("trueArts")
+	
 	$TimerArts.stop()
