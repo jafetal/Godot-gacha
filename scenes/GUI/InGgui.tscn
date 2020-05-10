@@ -171,8 +171,19 @@ wait_time = 0.7
 [node name="Gauge_test" type="Timer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1"]
 wait_time = 0.331
 autostart = true
+
+[node name="TimersSkill" type="Node" parent="Control/PanelContainer/HBoxContainer/ControlUnit1"]
+
+[node name="skillCT" type="Timer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill"]
+wait_time = 0.05
+
+[node name="skillRt" type="Timer" parent="Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill"]
+wait_time = 0.3
+[connection signal="acabo" from="Units/unit" to="." method="_on_unit_acabo"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_down" from="Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/Button" to="." method="_on_Button_button_down"]
 [connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/Unit1Atack_timer" to="." method="_on_Unit1Atack_timer_timeout"]
 [connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/ArtsCounter1" to="." method="_on_ArtsCounter1_timeout"]
 [connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/Gauge_test" to="." method="_on_Gauge_test_timeout"]
+[connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillCT" to="." method="_on_skillCT_timeout"]
+[connection signal="timeout" from="Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt" to="." method="_on_skillRt_timeout"]

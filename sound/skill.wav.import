@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/skill.wav-bff11a7fde77030a4fdfcf1f0b8e7d5e.sample"
+
+[deps]
+
+source_file="res://sound/skill.wav"
+dest_files=[ "res://.import/skill.wav-bff11a7fde77030a4fdfcf1f0b8e7d5e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

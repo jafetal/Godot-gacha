@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var sprite = $AnimatedSprite
-
+signal acabo
 var ANIM_STATE = [
 	"arts",
 	"attack",
@@ -33,7 +33,10 @@ func true_arts():
 	state = 3
 	$TimerArts.start()
 	
-	
+func skill():
+	idle()
+	play_anim("skill")
+
 func idle():
 	play_anim("idle")
 	
@@ -44,6 +47,7 @@ func play_anim(animacion):
 
 func _on_AnimatedSprite_animation_finished():
 	idle()
+	emit_signal("acabo")
 
 func _on_TimerArts_timeout():
 	if(state==2):
