@@ -7,12 +7,22 @@ var illustration = load("res://Sprites/Units_il/Mayo/Mayo.png")
 var listo1 = 0
 var skillCT1 = 100
 var u1Atacking = false
-onready var unit1 = [$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt
-	,$Control/PanelContainer/HBoxContainer/ControlUnit1/ArtsCounter1
-	,$Units/unit
-	,load("res://Sprites/Units_il/Mayo/Mayo.png")
-	,load("res://Sprites/Units_il/Mayo/Mayo_awk.png")
-	,load("res://Sprites/Characters/Mayo/Animaciones.tres")]
+
+onready var elements = {
+	"u1": $Units/unit,
+	"u1SkillRt": $Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt,
+	"u1ArtsCounter": $Control/PanelContainer/HBoxContainer/ControlUnit1/ArtsCounter1
+	}
+	
+onready var unit1d = {
+	"img": load("res://Sprites/Units_il/Mayo/Mayo.png"),
+	"imgAwk": load("res://Sprites/Units_il/Mayo/Mayo_awk.png"),
+	"AnimTree": load("res://Sprites/Characters/Mayo/Animaciones.tres"),
+	"atk": 0,
+	"def": 0,
+	"hp": 0,
+	"speed": 0
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,7 +30,7 @@ func _ready():
 	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/skill.value = skillCT1
 	menu_ajustement()
 	initialize_artsgauge()
-	unit_initialize(unit1[5],unit1[3],1)
+	unit_initialize(unit1d["AnimTree"],unit1d["img"],1)
 
 func unit_initialize(animations,illus,slot):
 	var perfil = AtlasTexture.new()
@@ -28,7 +38,7 @@ func unit_initialize(animations,illus,slot):
 	perfil.set_region(Rect2(120, 0, 250, 250))
 	if(slot==1):
 		$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/perfil.texture = perfil
-		unit1[2].set_data(animations,illus)
+		elements["u1"].set_data(animations,illus)
 
 
 func selectMovement(cskillRT,timerArts,unit,perfil,perfilawk):
@@ -83,17 +93,17 @@ func initialize_artsgauge():
 	bar.set_region(Rect2(0, 0, 260, 25))	
 	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Gauge/Arts.texture_progress = bar
 
-#controles Unit1
+#controles Unit1 (cskillRT,timerArts,unit,perfil,perfilawk)
 func _on_Button_button_down():
-	selectMovement(unit1[0],unit1[1],unit1[2],unit1[3],unit1[4])	
+	selectMovement(elements["u1SkillRt"],elements["u1ArtsCounter"],elements["u1"],unit1d["img"],unit1d["imgAwk"])	
 func _on_skillCT_timeout():#Recarga de skill
 	if(skillCT1<100):
 		skillCT1+=2.5
 	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/skill.value = skillCT1
 func _on_skillRt_timeout():#Despues de un retraso se activa la skill
-	callSkill(unit1[2],$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillCT,$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt)
+	callSkill(elements["u1"],$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillCT,$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt)
 func _on_Unit1Atack_timer_timeout():#Ataque continuo
-	unit1[2].attack()
+	elements["u1"].attack()
 func _on_unit_acabo():#unidad 1 termino de hacer sus arts
 	u1Atacking = false
 
