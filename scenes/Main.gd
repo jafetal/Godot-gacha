@@ -17,4 +17,4 @@ func _on_quest_button_down():
 
 
 func _on_units_button_down():
-	SceneSwitcher.change_scene("res://scenes/Menus/Party.tscn", {"location":"Nivel1","nivel":2})
+	SceneSwitcher.change_scene("res://scenes/Menus/PartyEdit/PartySelect.tscn", {"location":"Nivel1","nivel":2})

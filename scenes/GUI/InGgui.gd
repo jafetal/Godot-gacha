@@ -7,6 +7,7 @@ var illustration = load("res://Sprites/Units_il/Mayo/Mayo.png")
 var listo1 = 0
 var skillCT1 = 100
 var u1Atacking = false
+onready var unit1d = dUnits.getUnit1()
 
 onready var elements = {
 	"u1": $Units/unit,
@@ -14,16 +15,6 @@ onready var elements = {
 	"u1ArtsCounter": $Control/PanelContainer/HBoxContainer/ControlUnit1/ArtsCounter1
 	}
 	
-onready var unit1d = {
-	"img": load("res://Sprites/Units_il/Mayo/Mayo.png"),
-	"imgAwk": load("res://Sprites/Units_il/Mayo/Mayo_awk.png"),
-	"AnimTree": load("res://Sprites/Characters/Mayo/Animaciones.tres"),
-	"atk": 0,
-	"def": 0,
-	"hp": 0,
-	"speed": 0
-}
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -39,6 +30,9 @@ func unit_initialize(animations,illus,slot):
 	if(slot==1):
 		$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/perfil.texture = perfil
 		elements["u1"].set_data(animations,illus)
+		var T_atk = $Control/PanelContainer/HBoxContainer/ControlUnit1/Unit1Atack_timer
+		T_atk.wait_time = unit1d["atk_speed"]
+		T_atk.start()
 
 
 func selectMovement(cskillRT,timerArts,unit,perfil,perfilawk):
@@ -80,7 +74,7 @@ func menu_ajustement():
 	$Control/PanelContainer.rect_position = pos
 
 func callSkill(unit, tskillCT, skillrt):
-	if(skillCT1==100 and !u1Atacking):
+	if(skillCT1>=100 and !u1Atacking):
 		unit.skill()
 		playsSound(load("res://sound/skill.wav"))
 		tskillCT.start()
@@ -98,18 +92,19 @@ func _on_Button_button_down():
 	selectMovement(elements["u1SkillRt"],elements["u1ArtsCounter"],elements["u1"],unit1d["img"],unit1d["imgAwk"])	
 func _on_skillCT_timeout():#Recarga de skill
 	if(skillCT1<100):
-		skillCT1+=2.5
+		skillCT1 += (5 / float(unit1d["skillCool"]))
 	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Personaje/skill.value = skillCT1
 func _on_skillRt_timeout():#Despues de un retraso se activa la skill
 	callSkill(elements["u1"],$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillCT,$Control/PanelContainer/HBoxContainer/ControlUnit1/TimersSkill/skillRt)
 func _on_Unit1Atack_timer_timeout():#Ataque continuo
 	elements["u1"].attack()
+	print("atacando")
 func _on_unit_acabo():#unidad 1 termino de hacer sus arts
 	u1Atacking = false
 
 
 func _on_Gauge_test_timeout():
-	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Gauge/Arts.value += 5
+	$Control/PanelContainer/HBoxContainer/ControlUnit1/HBoxContainer/VBoxContainer/Gauge/Arts.value += 1 
 
 func _on_ArtsCounter1_timeout():
 	if(listo1>0):

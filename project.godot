@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneSwitcher="*res://scripts/scene_switcher.gd"
+dUnits="*res://scripts/default_units.gd"
+PlayerProgress="*res://scripts/Player_progress.gd"
 
 [display]
 

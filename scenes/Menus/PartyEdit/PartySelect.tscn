@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Characters/Mayo/Animaciones.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Sprites/GUI/PartyMenu/BaseSelectP.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Menus/PartyEdit/PartySelect.gd" type="Script" id=3]
+
+[node name="Party" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Buttons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Buttons/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 64.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Buttons/VBoxContainer/CenterContainer"]
+margin_left = 195.0
+margin_right = 285.0
+margin_bottom = 64.0
+
+[node name="TextureButton" type="TextureButton" parent="Buttons/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 90.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UnitSlot1" type="AnimatedSprite" parent="Buttons/VBoxContainer/CenterContainer/HBoxContainer/TextureButton"]
+position = Vector2( 44.1764, 19.0199 )
+scale = Vector2( 0.6, 0.6 )
+frames = ExtResource( 1 )
+animation = "idle"
+frame = 1
+playing = true
+[connection signal="button_down" from="Buttons/VBoxContainer/CenterContainer/HBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
